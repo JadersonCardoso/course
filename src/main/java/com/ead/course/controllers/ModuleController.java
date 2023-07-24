@@ -78,7 +78,7 @@ public class ModuleController {
                                                            @PathVariable(value = "moduleId") UUID moduleId) {
         Optional<ModuleModel> moduleModelOptional = moduleService.findModuleIntoCourse(courseId, moduleId);
         if (!moduleModelOptional.isPresent()) {
-            ResponseEntity.status(HttpStatus.NOT_FOUND).body("Module not fount for this course.");
+            ResponseEntity.status(HttpStatus.NOT_FOUND).body("Module not found for this course.");
         }
         return ResponseEntity.status(HttpStatus.OK).body(moduleModelOptional.get());
     }

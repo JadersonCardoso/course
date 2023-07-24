@@ -22,7 +22,7 @@ import java.util.UUID;
 public class CourseController {
 
     @Autowired
-    CourseService courseService;
+    private CourseService courseService;
 
     @PostMapping
     public ResponseEntity<Object> saveCourse(@RequestBody @Valid CourseDto courseDto) {
