@@ -47,7 +47,7 @@ public class CourseUserController {
 
 
     @PostMapping("courses/{courseId}/users/subscription")
-    public ResponseEntity<Object> sabeSubscriptionUSerInCourse(@PathVariable(value = "courseId") UUID courseId,
+    public ResponseEntity<Object> sabeSubscriptionUserInCourse(@PathVariable(value = "courseId") UUID courseId,
                                                                @RequestBody @Valid SubscriptionDto subscriptionDto) {
         ResponseEntity<UserDto> responseUser;
 
@@ -68,7 +68,7 @@ public class CourseUserController {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error: User not found.");
             }
         }
-        CourseUserModel courseUserModel = courseUserService.save(courseModelOptional.get().convertToCourseUserModel(subscriptionDto.getUserId()));
+        CourseUserModel courseUserModel = courseUserService.saveAndSendSubscriptionUserInCourse(courseModelOptional.get().convertToCourseUserModel(subscriptionDto.getUserId()));
 
         return ResponseEntity.status(HttpStatus.CREATED).body(courseUserModel);
 
